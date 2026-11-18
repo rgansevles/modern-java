@@ -21,23 +21,22 @@ public class HttpClientDemo {
     public static void main(String[] args) throws Exception {
         HttpServer server = startServer();
         URI uri = URI.create("http://localhost:" + server.getAddress().getPort() + "/employees/1");
-        try {
-            var client = HttpClient.newHttpClient();
+        try (var client = HttpClient.newHttpClient()) {
             var request = HttpRequest.newBuilder(uri)
-                .header("Accept", JSON)
-                .timeout(Duration.ofSeconds(30))
-                .build();
+                    .header("Accept", JSON)
+                    .timeout(Duration.ofSeconds(30))
+                    .build();
             var response = client.send(request,
-                BodyHandlers.ofString());
+                    BodyHandlers.ofString());
             int status = response.statusCode();
             String body = response.body();
             System.out.println(status + " " + body);
 
             // async: returns a CompletableFuture
             client.sendAsync(request, BodyHandlers.ofString())
-                .thenApply(r -> "async: " + r.statusCode() + " " + r.body())
-                .thenAccept(System.out::println)
-                .join();
+                    .thenApply(r -> "async: " + r.statusCode() + " " + r.body())
+                    .thenAccept(System.out::println)
+                    .join();
         } finally {
             server.stop(0);
         }

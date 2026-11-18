@@ -32,10 +32,9 @@ public class Main {
         new Demo("streams", "Stream API and gatherers", StreamsDemo::main),
         new Demo("http", "HTTP Client API", HttpClientDemo::main),
         new Demo("npe", "Tooling: helpful NullPointerExceptions", HelpfulNpeDemo::main),
-        new Demo("virtualthreads", "Also in the box: virtual threads", VirtualThreadsDemo::main),
-        new Demo("scopedvalues", "Also in the box: scoped values", ScopedValuesDemo::main));
+        new Demo("virtualthreads", "Also in the box: virtual threads", VirtualThreadsDemo::main));
 
-    public static void main(String[] args) throws Exception {
+    static void main(String[] args) throws Exception {
         String choice = args.length > 0 ? args[0] : "";
         if (choice.isBlank()) {
             System.out.println("Usage: ./gradlew run -q --args=<demo>   (or --args=all)\n");

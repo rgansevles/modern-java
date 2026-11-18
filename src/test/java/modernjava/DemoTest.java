@@ -1,7 +1,9 @@
 package modernjava;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
@@ -59,8 +61,8 @@ class DemoTest {
 
     @Test
     void workdaysSkipTheWeekend() {
-        assertEquals(false, StreamsDemo.isWorkday(LocalDate.of(2026, 11, 21)));   // Saturday
-        assertEquals(true, StreamsDemo.isWorkday(LocalDate.of(2026, 11, 23)));    // Monday
+        assertFalse(StreamsDemo.isWorkday(LocalDate.of(2026, 11, 21)));   // Saturday
+        assertTrue(StreamsDemo.isWorkday(LocalDate.of(2026, 11, 23)));    // Monday
     }
 
     @Test

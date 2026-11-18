@@ -24,14 +24,10 @@ public class StreamsDemo {
         };
     }
 
-    private void upload(List<String> batch) {
-        uploader.accept(batch);
-    }
-
     void sendAll(List<String> records) {
         records.stream()                    // 24
             .gather(Gatherers.windowFixed(100))
-            .forEach(this::upload);
+            .forEach(uploader);
     }
 
     public static void main(String[] args) {
@@ -48,7 +44,7 @@ public class StreamsDemo {
         LocalDate start = LocalDate.of(2026, 11, 1);
         LocalDate end = LocalDate.of(2026, 12, 1);
         long n = start.datesUntil(end)      // 9
-            .filter(d -> isWorkday(d))
+            .filter(StreamsDemo::isWorkday)
             .count();
         System.out.println("workdays in November 2026: " + n);
 

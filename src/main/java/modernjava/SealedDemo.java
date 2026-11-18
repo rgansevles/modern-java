@@ -11,7 +11,7 @@ import modernjava.domain.Result;
 public class SealedDemo {
 
     // Only Ok and Failed exist: try to add another one and the compiler refuses.
-    // record Other() implements Result { }   → compile error (remove the // to show it)
+    // record Other() implements Result { }  
 
     public static void main(String[] args) {
         System.out.println("Result is sealed: " + Result.class.isSealed());
