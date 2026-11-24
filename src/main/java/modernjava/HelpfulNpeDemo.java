@@ -11,7 +11,7 @@ public class HelpfulNpeDemo {
             System.out.println(employee.dept().toUpperCase());
         } catch (NullPointerException e) {
             // Java 8: just "NullPointerException". Now the message names what was null.
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 }

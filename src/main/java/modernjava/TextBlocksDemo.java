@@ -26,5 +26,11 @@ public class TextBlocksDemo {
         String text = "  first line  \n  second line \n";
         text.lines().map(String::strip)    // 11
             .forEach(l -> System.out.println("[" + l + "]"));
+
+
+        String csvContent = """
+            Mandantengruppe;MAN;AK;Pnr;Vertragsnummer;Nachname;Vorname;Titel;Geschlecht;Geburtsdatum;Vertragsbeginn;Vertragsende;Historisches Ab-Datum;Historisches Bis-Datum
+            Driebergen;62;030;001234;1;Hagen;Nina;;Weiblich;07.07.1974;01.10.2018;;01.01.1970;31.01.2099
+            """;
     }
 }
